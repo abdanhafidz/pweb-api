@@ -3,7 +3,7 @@ name: Deploy to Huggingface
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy-to-huggingface:
