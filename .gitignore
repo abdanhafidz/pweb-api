@@ -1,0 +1,7 @@
+.env
+vendor/
+quzuu-be.exe
+README.md
+.qodo
+.error
+logs/
