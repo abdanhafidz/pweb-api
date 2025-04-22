@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Abdan Hafidz Portal</title>
+    <link rel="stylesheet" href="style/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+</head>
+<body>
+    <!-- Loading Indicator -->
+    <div class="loading" id="loadingIndicator" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Abdan Hafidz Portal</div>
+                <div class="nav-links" id="navLinks">
+                    <!-- Links will be dynamically added based on auth state -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Register Page -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <h2 class="auth-title">Create an Account</h2>
+                <div id="registerAlert" style="display: none;"></div>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerEmail">Email Address</label>
+                        <input type="email" class="form-control" id="registerEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" class="form-control" id="registerPassword" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Register</button>
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="login.html">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Abdan Hafidz Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Check if user is already logged in
+            if (isLoggedIn()) {
+                window.location.href = 'profile.html';
+            }
+            
+            // Register Form Submission
+            $('#registerForm').on('submit', function(e) {
+                e.preventDefault();
+                const email = $('#registerEmail').val();
+                const password = $('#registerPassword').val();
+                const confirmPassword = $('#confirmPassword').val();
+                
+                if (password !== confirmPassword) {
+                    showAlert('registerAlert', 'danger', 'Passwords do not match.');
+                    return;
+                }
+                
+                register(email, password);
+            });
+        });
+    </script>
+</body>
+</html>

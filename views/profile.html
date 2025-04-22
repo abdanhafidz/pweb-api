@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Abdan Hafidz Portal</title>
+    <link rel="stylesheet" href="style/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+</head>
+<body>
+    <!-- Loading Indicator -->
+    <div class="loading" id="loadingIndicator" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Abdan Hafidz Portal</div>
+                <div class="nav-links" id="navLinks">
+                    <!-- Links will be dynamically added based on auth state -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Profile Page -->
+    <section>
+        <div class="container">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <div class="profile-avatar" id="profileInitials">U</div>
+                    <div class="profile-title">
+                        <h1 id="profileName">User Profile</h1>
+                        <p class="profile-email" id="profileEmail">email@example.com</p>
+                    </div>
+                </div>
+                <div id="profileAlert" style="display: none;"></div>
+                <form id="profileForm">
+                    <div class="profile-form">
+                        <div class="form-group">
+                            <label for="profileFullName">Full Name</label>
+                            <input type="text" class="form-control" id="profileFullName" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="profileInitialName">Initial Name</label>
+                            <input type="text" class="form-control" id="profileInitialName" placeholder="Enter your initials">
+                        </div>
+                        <div class="form-group">
+                            <label for="profileUniversity">University</label>
+                            <input type="text" class="form-control" id="profileUniversity" placeholder="Enter your university">
+                        </div>
+                        <div class="form-group">
+                            <label for="profilePhone">Phone Number</label>
+                            <input type="tel" class="form-control" id="profilePhone" placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button type="submit" class="btn">Save Changes</button>
+                        <button type="button" class="btn btn-danger" id="logoutBtn">Logout</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Abdan Hafidz Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Check if user is logged in
+            if (!isLoggedIn()) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Fetch user profile data
+            fetchUserProfile();
+            
+            // Profile Form Submission
+            $('#profileForm').on('submit', function(e) {
+                e.preventDefault();
+                const profileData = {
+                    fullName: $('#profileFullName').val(),
+                    initialName: $('#profileInitialName').val(),
+                    university: $('#profileUniversity').val(),
+                    phoneNumber: $('#profilePhone').val()
+                };
+                
+                updateUserProfile(profileData);
+            });
+            
+            // Logout Button
+            $('#logoutBtn').on('click', function(e) {
+                e.preventDefault();
+                logout();
+            });
+        });
+    </script>
+</body>
+</html>

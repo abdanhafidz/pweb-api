@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Abdan Hafidz Portal</title>
+    <title>Welcome to Abdan Hafidz Portal</title>
     <link rel="stylesheet" href="style/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="scripts/scripts.js"></script>
@@ -26,26 +26,18 @@
         </div>
     </header>
 
-    <!-- Login Page -->
+    <!-- Welcome Section -->
     <section class="auth-section">
         <div class="container">
             <div class="auth-container">
-                <h2 class="auth-title">Login to Your Account</h2>
-                <div id="loginAlert" style="display: none;"></div>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label for="loginEmail">Email Address</label>
-                        <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="loginPassword">Password</label>
-                        <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required>
-                    </div>
-                    <button type="submit" class="btn" style="width: 100%;">Login</button>
-                    <div class="form-footer">
-                        <p>Don't have an account? <a href="register.html">Register Now</a></p>
-                    </div>
-                </form>
+                <h2 class="auth-title">Welcome to Abdan Hafidz Portal</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">
+                    Your personal dashboard for managing your profile and settings.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="login.html" class="btn">Login</a>
+                    <a href="register.html" class="btn btn-outline">Register</a>
+                </div>
             </div>
         </div>
     </section>
@@ -63,14 +55,6 @@
             if (isLoggedIn()) {
                 window.location.href = 'profile.html';
             }
-            
-            // Login Form Submission
-            $('#loginForm').on('submit', function(e) {
-                e.preventDefault();
-                const email = $('#loginEmail').val();
-                const password = $('#loginPassword').val();
-                login(email, password);
-            });
         });
     </script>
 </body>
