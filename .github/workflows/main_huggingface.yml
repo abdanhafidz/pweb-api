@@ -1,9 +1,9 @@
-name: Deploy to Development via Huggingface
+name: Deploy to Huggingface
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy-to-huggingface:
